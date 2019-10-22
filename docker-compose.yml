@@ -5,3 +5,10 @@ services:
     container_name: dynamodb-demo-app
     ports:
      - "8080:8080"
+    links:
+     - "dynamodb-local"
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb-local
+    ports:
+     - "8000:8000"
