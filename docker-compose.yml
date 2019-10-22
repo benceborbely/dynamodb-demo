@@ -1,0 +1,7 @@
+version: '2'
+services:
+  dynamodb-demo-app:
+    image: benceborbely/dynamodb-demo-app:latest
+    container_name: dynamodb-demo-app
+    ports:
+     - "8080:8080"
