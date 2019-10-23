@@ -1,0 +1,17 @@
+version: '2'
+services:
+  dynamodb-demo-app:
+    image: benceborbely/dynamodb-demo-app:latest
+    container_name: dynamodb-demo-app
+    ports:
+     - "8080:8080"
+    links:
+     - "dynamodb-local"
+    environment:
+     - AWS_ACCESS_KEY_ID=dummy
+     - AWS_SECRET_ACCESS_KEY=dummy
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb-local
+    ports:
+     - "8000:8000"
