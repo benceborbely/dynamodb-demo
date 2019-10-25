@@ -23,17 +23,21 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity create(@Valid @RequestBody MovieRequest movieRequest) {
-        Movie movie = Movie
-            .builder()
-            .title(movieRequest.getTitle())
-            .director(movieRequest.getDirector())
-            .length(movieRequest.getLength())
-            .year(movieRequest.getYear())
-            .ageLimit(movieRequest.getAgeLimit())
-            .starActors(movieRequest.getStarActors())
-            .build();
+        return ResponseEntity.ok(movieService.save(createMovieFrom(movieRequest)));
+    }
 
-        return ResponseEntity.ok(movieService.save(movie));
+    @PutMapping("/{id}")
+    public ResponseEntity update(@Valid @RequestBody MovieRequest movieRequest, @PathVariable String id) {
+        Optional<Movie> movie = movieService.findBy(id);
+
+        if (!movie.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Movie updatedMovie = createMovieFrom(movieRequest);
+        updatedMovie.setId(movie.get().getId());
+
+        return ResponseEntity.ok(movieService.save(updatedMovie));
     }
 
     @GetMapping("/{id}")
@@ -54,6 +58,18 @@ public class MovieController {
         movieService.deleteBy(id);
 
         return ResponseEntity.ok().build();
+    }
+
+    private Movie createMovieFrom(MovieRequest movieRequest) {
+        return Movie
+            .builder()
+            .title(movieRequest.getTitle())
+            .director(movieRequest.getDirector())
+            .length(movieRequest.getLength())
+            .year(movieRequest.getYear())
+            .ageLimit(movieRequest.getAgeLimit())
+            .starActors(movieRequest.getStarActors())
+            .build();
     }
 
 }
