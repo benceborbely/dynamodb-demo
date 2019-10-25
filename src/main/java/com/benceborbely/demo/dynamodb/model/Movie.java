@@ -3,7 +3,15 @@ package com.benceborbely.demo.dynamodb.model;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @DynamoDBTable(tableName = "movies")
 public class Movie {
 
@@ -23,77 +31,5 @@ public class Movie {
     private int ageLimit;
 
     private List<String> starActors;
-
-    public Movie() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public long getLength() {
-        return length;
-    }
-
-    public void setLength(long length) {
-        this.length = length;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getAgeLimit() {
-        return ageLimit;
-    }
-
-    public void setAgeLimit(int ageLimit) {
-        this.ageLimit = ageLimit;
-    }
-
-    public List<String> getStarActors() {
-        return starActors;
-    }
-
-    public void setStarActors(List<String> starActors) {
-        this.starActors = starActors;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", year=" + year +
-                ", length=" + length +
-                ", director='" + director + '\'' +
-                ", ageLimit=" + ageLimit +
-                ", starActors=" + starActors +
-                '}';
-    }
 
 }

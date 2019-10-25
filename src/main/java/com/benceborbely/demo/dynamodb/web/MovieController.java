@@ -23,13 +23,15 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity create(@Valid @RequestBody MovieRequest movieRequest) {
-        Movie movie = new Movie();
-        movie.setTitle(movieRequest.getTitle());
-        movie.setDirector(movieRequest.getDirector());
-        movie.setLength(movieRequest.getLength());
-        movie.setYear(movieRequest.getYear());
-        movie.setAgeLimit(movieRequest.getAgeLimit());
-        movie.setStarActors(movieRequest.getStarActors());
+        Movie movie = Movie
+            .builder()
+            .title(movieRequest.getTitle())
+            .director(movieRequest.getDirector())
+            .length(movieRequest.getLength())
+            .year(movieRequest.getYear())
+            .ageLimit(movieRequest.getAgeLimit())
+            .starActors(movieRequest.getStarActors())
+            .build();
 
         return ResponseEntity.ok(movieService.save(movie));
     }
