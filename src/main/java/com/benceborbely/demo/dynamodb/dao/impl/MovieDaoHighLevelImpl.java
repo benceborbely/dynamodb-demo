@@ -9,13 +9,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class MovieDaoImpl implements MovieDao {
+//@Component
+public class MovieDaoHighLevelImpl implements MovieDao {
 
     private DynamoDBMapper dynamoDBMapper;
 
     @Autowired
-    public MovieDaoImpl(DynamoDBMapper dynamoDBMapper) {
+    public MovieDaoHighLevelImpl(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
     }
 
