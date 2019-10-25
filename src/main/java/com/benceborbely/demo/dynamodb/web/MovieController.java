@@ -3,6 +3,7 @@ package com.benceborbely.demo.dynamodb.web;
 import com.benceborbely.demo.dynamodb.model.Movie;
 import com.benceborbely.demo.dynamodb.model.MovieRequest;
 import com.benceborbely.demo.dynamodb.service.MovieService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,11 @@ public class MovieController {
         return movie.isPresent()
                 ? ResponseEntity.ok(movie.get())
                 : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Movie>> findAll() {
+        return ResponseEntity.ok(movieService.findAll());
     }
 
     @DeleteMapping("/{id}")

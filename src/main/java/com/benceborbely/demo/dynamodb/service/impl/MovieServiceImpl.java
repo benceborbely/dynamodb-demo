@@ -3,6 +3,9 @@ package com.benceborbely.demo.dynamodb.service.impl;
 import com.benceborbely.demo.dynamodb.model.Movie;
 import com.benceborbely.demo.dynamodb.repository.MovieRepository;
 import com.benceborbely.demo.dynamodb.service.MovieService;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,15 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Optional<Movie> findBy(String id) {
         return movieRepository.findById(id);
+    }
+
+    @Override
+    public List<Movie> findAll() {
+        Iterable<Movie> iterable = movieRepository.findAll();
+
+        return StreamSupport
+            .stream(iterable.spliterator(), false)
+            .collect(Collectors.toList());
     }
 
     @Override
