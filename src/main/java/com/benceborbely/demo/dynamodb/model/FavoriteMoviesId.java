@@ -1,10 +1,12 @@
 package com.benceborbely.demo.dynamodb.model;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 
 import java.io.Serializable;
 
+@DynamoDBDocument
 public class FavoriteMoviesId implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -13,7 +15,10 @@ public class FavoriteMoviesId implements Serializable {
 
     private long addedTsInMs;
 
-    @DynamoDBHashKey
+    public FavoriteMoviesId() {
+    }
+
+    @DynamoDBHashKey(attributeName = "userId")
     public String getUserId() {
         return userId;
     }
@@ -22,7 +27,7 @@ public class FavoriteMoviesId implements Serializable {
         this.userId = userId;
     }
 
-    @DynamoDBRangeKey
+    @DynamoDBRangeKey(attributeName = "addedTsInMs")
     public long getAddedTsInMs() {
         return addedTsInMs;
     }
