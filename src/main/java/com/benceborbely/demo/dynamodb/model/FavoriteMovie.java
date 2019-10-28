@@ -25,6 +25,6 @@ public class FavoriteMovie {
 
     private int publishYear;
 
-    private String length;
+    private int length;
 
 }
