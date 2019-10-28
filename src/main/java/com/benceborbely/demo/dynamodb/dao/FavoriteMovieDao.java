@@ -7,6 +7,6 @@ public interface FavoriteMovieDao {
 
     FavoriteMovie save(FavoriteMovie favoriteMovie);
 
-    List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs);
+    List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs, int publishYear);
 
 }

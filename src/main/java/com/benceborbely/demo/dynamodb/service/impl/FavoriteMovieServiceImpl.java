@@ -23,8 +23,8 @@ public class FavoriteMovieServiceImpl implements FavoriteMovieService {
     }
 
     @Override
-    public List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs) {
-        return favoriteMovieDao.getFavoriteMovies(userId, fromTs);
+    public List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs, int publishYear) {
+        return favoriteMovieDao.getFavoriteMovies(userId, fromTs, publishYear);
     }
 
 }

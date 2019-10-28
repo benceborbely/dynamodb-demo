@@ -28,13 +28,15 @@ public class FavoriteMovieDaoHighLevelImpl implements FavoriteMovieDao {
     }
 
     @Override
-    public List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs) {
+    public List<FavoriteMovie> getFavoriteMovies(String userId, long fromTs, int publishYear) {
         Map<String, AttributeValue> eav = new HashMap<>();
         eav.put(":userId", new AttributeValue().withS(userId));
         eav.put(":fromTs", new AttributeValue().withN(String.valueOf(fromTs)));
+        eav.put(":publishYear", new AttributeValue().withN(String.valueOf(publishYear)));
 
         DynamoDBQueryExpression<FavoriteMovie> queryExpression = new DynamoDBQueryExpression<FavoriteMovie>()
             .withKeyConditionExpression("userId = :userId and addedTsInMs > :fromTs")
+            .withFilterExpression("publishYear = :publishYear")
             .withExpressionAttributeValues(eav);
 
         return dynamoDBMapper.query(FavoriteMovie.class, queryExpression);

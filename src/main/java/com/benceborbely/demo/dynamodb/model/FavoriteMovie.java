@@ -21,11 +21,9 @@ public class FavoriteMovie {
     @DynamoDBRangeKey
     private long addedTsInMs;
 
-    private boolean isTrailerWatched;
-
     private String title;
 
-    private String year;
+    private int publishYear;
 
     private String length;
 

@@ -31,8 +31,8 @@ public class FavoriteMovieController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<FavoriteMovie>> getFavoriteMovies(@PathVariable String userId, @RequestParam long fromTs) {
-        return ResponseEntity.ok(favoriteMovieService.getFavoriteMovies(userId, fromTs));
+    public ResponseEntity<List<FavoriteMovie>> getFavoriteMovies(@PathVariable String userId, @RequestParam long fromTs, @RequestParam int publishYear) {
+        return ResponseEntity.ok(favoriteMovieService.getFavoriteMovies(userId, fromTs, publishYear));
     }
 
 }
