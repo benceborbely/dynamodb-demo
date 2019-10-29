@@ -9,7 +9,6 @@ import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRep
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 @Configuration
 @EnableDynamoDBRepositories(basePackageClasses = MovieRepository.class)
@@ -26,10 +25,9 @@ public class DynamoDbConfig {
                 .build();
     }
 
-    @Bean
-    @Primary
-    public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB client) {
-        return new DynamoDBMapper(client);
-    }
+//    @Bean
+//    public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB client) {
+//        return new DynamoDBMapper(client);
+//    }
 
 }
