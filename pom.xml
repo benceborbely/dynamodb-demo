@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <spring-boot-starter-web.version>2.2.0.RELEASE</spring-boot-starter-web.version>
+        <spring-boot-starter-web.version>2.5.12</spring-boot-starter-web.version>
         <java.version>1.8</java.version>
         <docker-maven-plugin.version>1.0.0</docker-maven-plugin.version>
         <aws-java-sdk-dynamodb.version>1.11.656</aws-java-sdk-dynamodb.version>
