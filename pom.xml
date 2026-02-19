@@ -14,7 +14,7 @@
         <aws-java-sdk-dynamodb.version>1.11.656</aws-java-sdk-dynamodb.version>
         <spring-data-dynamodb.version>5.1.0</spring-data-dynamodb.version>
         <lombok.version>1.18.10</lombok.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-lang3.version>3.18.0</commons-lang3.version>
     </properties>
 
     <parent>
